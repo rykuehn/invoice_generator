@@ -1,0 +1,69 @@
+{
+  "Directors & Officers" : {
+    "id": "a0A6A000001gSlw", 
+    "name": "OneKloud",
+    "stage": "New", 
+    "type": "Directors & Officers",
+    "carrier": "The Hartford",
+    "policyNumber": "UDC-1858869-AAA-01", 
+    "effectiveDate": "11.20.2016",
+    "renewalDate": "11.20.2017",
+    "premium": 12453 
+  },
+  "Property": {
+    "id": "a0A6A000001gSlw", 
+    "name": "OneKloud",
+    "stage": "New", 
+    "type": "Property",
+    "carrier": "State Farm",
+    "policyNumber": "UDC-1858869-BBB-02", 
+    "effectiveDate": "11.20.2016",
+    "renewalDate": "11.20.2017",
+    "premium": 3231 
+  },
+  "Workers’ compensation": {
+    "id": "a0A6A000001gSlw", 
+    "name": "OneKloud",
+    "stage": "New", 
+    "type": "Workers' Compensation",
+    "carrier": "All State",
+    "policyNumber": "UDC-1858869-CCC-03", 
+    "effectiveDate": "11.20.2016",
+    "renewalDate": "11.20.2017",
+    "premium": 221991
+  },
+  "Product Liability": {
+    "id": "a0A6A000001gSlw", 
+    "name": "OneKloud",
+    "stage": "New", 
+    "type": "Product Liability",
+    "carrier": "Geico",
+    "policyNumber": "UDC-1858869-DDD-04", 
+    "effectiveDate": "11.20.2016",
+    "renewalDate": "11.20.2017",
+    "premium": 456
+  },
+  "Business Interruption": {
+    "id": "a0A6A000001gSlw", 
+    "name": "OneKloud",
+    "stage": "New", 
+    "type": "Business Interruption",
+    "carrier": "Progressive",
+    "policyNumber": "UDC-1858869-EEE-05", 
+    "effectiveDate": "11.20.2016",
+    "renewalDate": "11.20.2017",
+    "premium": 121984
+  },
+  "Vehicle": {
+    "id": "a0A6A000001gSlw", 
+    "name": "OneKloud",
+    "stage": "New", 
+    "type": "Vehicle",
+    "carrier": "The Hartford",
+    "policyNumber": "UDC-1858869-FFF-06", 
+    "effectiveDate": "11.20.2016",
+    "renewalDate": "11.20.2017",
+    "premium": 141905
+  }
+  
+}
