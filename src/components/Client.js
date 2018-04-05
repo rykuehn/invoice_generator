@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Title = styled.h1`
 font-size: 1.5em;
-color: green;
+color: black;
 `;
 
 const InvoiceListContainer = styled.div`
@@ -19,7 +19,7 @@ const Client = (props) => {
     return invoiceArray.map((invoice, i) => {
       const newTo = { 
         pathname: `${invoice.pathName}`, 
-        param1: "Par1" 
+        generalInvoiceData: invoice 
       };
       return(
         <tr key={i}>
@@ -44,6 +44,7 @@ const Client = (props) => {
             {renderAllInvoices(props.allInvoices)}
           </tbody>
         </Table>
+        <Link to="/"><Button bsSize="small" bsStyle="danger">Sign Out</Button></Link>
       </InvoiceListContainer>
     );
 };

@@ -24,7 +24,6 @@ class InvoiceCreator extends Component {
     this.state = {
       policies: '',
       show: false,
-      invoiceCounter: 0,
       selectedPolicies: {},
       renderToPolicyTable: [],
       coverageLimit: {},
@@ -34,6 +33,10 @@ class InvoiceCreator extends Component {
   }
 
   componentDidMount() {
+    console.log('local storage', localStorage.getItem('invoiceCounter'))
+    if(localStorage.getItem('invoiceCounter') === null){
+      this.setState({ invoiceCounter: localStorage.getItem('invoiceCounter')});
+    }
     axios.get('/data/policies.json')
           .then((response) => {
             const policies = response.data;
@@ -65,8 +68,7 @@ class InvoiceCreator extends Component {
 
   saveInvoice() {
     var data = Object.assign({}, this.state.selectedPolicies, this.state.coverageLimit);
-    this.props.saveInvoiceLink(`/invoice/${this.state.invoiceCounter}`, data);
-    this.setState({invoiceCounter: this.state.invoiceCounter + 1 });
+    this.props.saveInvoiceLink(`/invoice/${this.props.invoiceCounter}`, data);
   }
 
   fillOutPolicyDetails() {

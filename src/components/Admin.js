@@ -25,7 +25,7 @@ class Admin extends Component {
     return invoiceArray.map((invoice, i) => {
       const newTo = { 
         pathname: `${invoice.pathName}`, 
-        param1: "Par1" 
+        generalInvoiceData: invoice 
       };
       return(
         <tr key={i}>

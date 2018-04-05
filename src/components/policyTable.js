@@ -25,12 +25,13 @@ class PolicyTable extends Component {
         <tr>
           <th>Coverage Limits</th>
           <th> 
+            {this.props.preview ? <div>${this.props.info.coverageLimit}</div> :
             <FormGroup>
               <InputGroup>
                 <FormControl type="text" id={this.props.info.policy}/>
                 <InputGroup.Addon>.00</InputGroup.Addon>
               </InputGroup>
-            </FormGroup>
+            </FormGroup>}
           </th>
         </tr>
         <tr>
@@ -39,7 +40,7 @@ class PolicyTable extends Component {
         </tr>
         <tr>
           <th>Premium</th>
-          <th>{this.props.info.premium}</th>
+          <th>${this.props.info.premium}</th>
         </tr>
       </tbody>
     </Table>

@@ -21,6 +21,7 @@ class App extends Component {
       allInvoices:[],
       clients: {},
       clientIDCount: 0,
+      invoiceCounter: 0,
     }
   }
 
@@ -34,7 +35,7 @@ class App extends Component {
   }
 
   componentWillUnMount() {
-    localStorage.setItem('allInvoices', this.state.allInvoices);
+    localStorage.setItem('allInvoices', this.state.allInvoices, 'invoiceCounter', invoiceCounter);
   }
 
   saveInvoiceLink(pathName, data) {
@@ -54,7 +55,8 @@ class App extends Component {
 
     var dateCreated = Math.round(new Date().getTime()/1000);
     var savedInvoice = { pathName, dateCreated, data };
-    this.setState({ allInvoices: [...this.state.allInvoices, savedInvoice]});
+    var invoiceCounter = this.state.invoiceCounter + 1;
+    this.setState({ allInvoices: [...this.state.allInvoices, savedInvoice], invoiceCounter});
   }
 
   render() {
@@ -69,7 +71,7 @@ class App extends Component {
               render={(props) => <Client {...props} allInvoices={this.state.allInvoices} /> }
             />
             <Route path="/invoiceCreator" 
-              render={(props) => <InvoiceCreator {...props} saveInvoiceLink={this.saveInvoiceLink.bind(this)} /> } 
+              render={(props) => <InvoiceCreator {...props} saveInvoiceLink={this.saveInvoiceLink.bind(this)} invoiceCounter={this.state.invoiceCounter}/> } 
             />
             <Route path="/invoice" component={PreviewInvoice} />
         </div>
