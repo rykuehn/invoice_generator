@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 
 const Title = styled.h1`
 font-size: 40px;
@@ -23,11 +23,15 @@ class Admin extends Component {
 
   renderAllInvoices(invoiceArray) {
     return invoiceArray.map((invoice, i) => {
+      const newTo = { 
+        pathname: `${invoice.pathName}`, 
+        param1: "Par1" 
+      };
       return(
         <tr key={i}>
           <th>{i}</th>
           <th>{invoice.dateCreated}</th>
-          <th><Link to={`/${invoice.pathName}`}>{invoice.pathName}</Link></th>
+          <th><Link to={newTo}>{invoice.pathName}</Link></th>
       </tr>
       );
     });
@@ -48,7 +52,8 @@ class Admin extends Component {
             {this.renderAllInvoices(this.props.allInvoices)}
           </tbody>
         </Table>
-        <Link to="/invoiceCreator"><button>Generate New Invoice</button></Link>
+        <Link to="/invoiceCreator"><Button bsSize="small" style={{marginRight: '20px'}}>Generate New Invoice</Button></Link>
+        <Link to="/"><Button bsSize="small" bsStyle="danger">Sign Out</Button></Link>
       </InvoiceListContainer>
     );
   }

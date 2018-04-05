@@ -27,7 +27,7 @@ class PolicyTable extends Component {
           <th> 
             <FormGroup>
               <InputGroup>
-                <FormControl type="text" />
+                <FormControl type="text" id={this.props.info.policy}/>
                 <InputGroup.Addon>.00</InputGroup.Addon>
               </InputGroup>
             </FormGroup>
@@ -35,13 +35,7 @@ class PolicyTable extends Component {
         </tr>
         <tr>
           <th>Policy Term</th>
-          <th>
-          <FormGroup>
-              <InputGroup>
-                <FormControl type="text" />
-              </InputGroup>
-            </FormGroup>
-          </th>
+          <th>{this.props.info.effectiveDate} - {this.props.info.renewalDate}</th>
         </tr>
         <tr>
           <th>Premium</th>

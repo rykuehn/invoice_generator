@@ -26,7 +26,8 @@ class InvoiceCreator extends Component {
       show: false,
       invoiceCounter: 0,
       selectedPolicies: {},
-      renderToPolicyTable: []
+      renderToPolicyTable: [],
+      coverageLimit: {},
     }
 
     this.renderPolicyTables = this.renderPolicyTables.bind(this);
@@ -63,9 +64,9 @@ class InvoiceCreator extends Component {
   }
 
   saveInvoice() {
-    console.log('called')
-    // this.props.saveInvoiceLink(`/invoice/${this.state.invoiceCounter}`, this.state.invoiceCounter);
-    // this.setState({invoiceCounter: this.state.invoiceCounter + 1 });
+    var data = Object.assign({}, this.state.selectedPolicies, this.state.coverageLimit);
+    this.props.saveInvoiceLink(`/invoice/${this.state.invoiceCounter}`, data);
+    this.setState({invoiceCounter: this.state.invoiceCounter + 1 });
   }
 
   fillOutPolicyDetails() {
@@ -93,6 +94,13 @@ class InvoiceCreator extends Component {
     });
   };
 
+  saveCoverageLimit(e){
+    var coverageLimitCopy = Object.assign({}, this.state.coverageLimit);
+    coverageLimitCopy[e.target.id] = e.target.value;
+
+    this.setState({coverageLimit: coverageLimitCopy});
+  }
+
   render(){
     const TableDisplay = this.state.renderToPolicyTable.length > 0 ? 
       this.renderPolicyTables(this.state.renderToPolicyTable) : '';
@@ -109,8 +117,10 @@ class InvoiceCreator extends Component {
           </FormGroup>
           </form>
           <Button onClick={this.fillOutPolicyDetails.bind(this)} type="submit">Fill Out Details On These Policies</Button>
-          {TableDisplay}
-          {this.state.renderToPolicyTable.length > 0 ? <Link to='/admin'><Button bsStyle="success" type="submit">Submit</Button></Link> : ''}
+          <FormGroup onChange={this.saveCoverageLimit.bind(this)}>
+            {TableDisplay}
+          </FormGroup>
+          {this.state.renderToPolicyTable.length > 0 ? <Link to='/admin'><Button onClick={this.saveInvoice.bind(this)} bsStyle="success" type="submit">Submit</Button></Link> : ''}
         </TableContainer> : ''}
       </div>
     );

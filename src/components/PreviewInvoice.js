@@ -7,7 +7,8 @@ color: green;
 `;
 
 const PreviewInvoice = (props) => {
-  return <Title>Preview Invoice Page {props.match.params.invoiceNumber}</Title>;
+  console.log(props.location)
+  return <Title>Preview Invoice Page</Title>;
 };
 
 export default PreviewInvoice;

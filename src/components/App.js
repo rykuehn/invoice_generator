@@ -18,26 +18,43 @@ class App extends Component {
     super(props);
 
     this.state = {
-      allInvoices:[{dateCreated: '2018.04.04', pathName: 'client'}, {dateCreated: '2018.22.04', pathName: 'secondOne'}],
+      allInvoices:[],
       clients: {},
       clientIDCount: 0,
     }
   }
 
-  saveInvoiceLink(clientID, data) {
-    //saves object of information from the form to a specific clientID. This information will be used to render a preview of the template for both the client and the admin
-    if(this.state.clients.clientID){
-      var updatedclientInvoices = [...this.state.clients.clientID.invoices, data];
-      this.setState({ allInvoices: [...this.state.allInvoices, data], clients: updatedclientInvoices });
-    } else {
-
-      var newClientID = this.state.clientIDCount;
-      var newClientInfo = {};
-      newClientInfo[newClientID] = [data];
-      var clientInfo = Object.assign({}, this.state.clients, newClientInfo);
-      
-      this.setState({ allInvoices: [...this.state.allInvoices, data], clients: clientInfo });
+  componentWillMount() {
+    var allInvoices = localStorage.getItem('allInvoices');
+    if (allInvoices === null) {
+      this.setState({allInvoices: []});
+    } else{
+      this.setState({allInvoices})
     }
+  }
+
+  componentWillUnMount() {
+    localStorage.setItem('allInvoices', this.state.allInvoices);
+  }
+
+  saveInvoiceLink(pathName, data) {
+    //saves object of information from the form to a specific clientID. This information will be used to render a preview of the template for both the client and the admin
+     // if(this.state.clients.clientID){
+    //   var updatedclientInvoices = [...this.state.clients.clientID.invoices, data];
+    //   this.setState({ allInvoices: [...this.state.allInvoices, data], clients: updatedclientInvoices });
+    // } else {
+
+    //   var newClientID = this.state.clientIDCount;
+    //   var newClientInfo = {};
+    //   newClientInfo[newClientID] = [data];
+    //   var clientInfo = Object.assign({}, this.state.clients, newClientInfo);
+      
+    //   this.setState({ allInvoices: [...this.state.allInvoices, data], clients: clientInfo });
+    // }
+
+    var dateCreated = Math.round(new Date().getTime()/1000);
+    var savedInvoice = { pathName, dateCreated, data };
+    this.setState({ allInvoices: [...this.state.allInvoices, savedInvoice]});
   }
 
   render() {
@@ -48,11 +65,13 @@ class App extends Component {
             <Route exact path="/admin" 
               render={(props) => <Admin {...props} allInvoices={this.state.allInvoices} /> }
             />
-            <Route path="/client" component={Client} />
+            <Route path="/client" 
+              render={(props) => <Client {...props} allInvoices={this.state.allInvoices} /> }
+            />
             <Route path="/invoiceCreator" 
               render={(props) => <InvoiceCreator {...props} saveInvoiceLink={this.saveInvoiceLink.bind(this)} /> } 
             />
-            <Route path="/invoice/:invoiceNumber" component={PreviewInvoice} />
+            <Route path="/invoice" component={PreviewInvoice} />
         </div>
       </Router>
     );
