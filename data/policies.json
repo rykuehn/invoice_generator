@@ -1,5 +1,6 @@
-{
-  "Directors & Officers" : {
+[
+  {
+    "policy": "Directors & Officers",
     "id": "a0A6A000001gSlw", 
     "name": "OneKloud",
     "stage": "New", 
@@ -10,7 +11,8 @@
     "renewalDate": "11.20.2017",
     "premium": 12453 
   },
-  "Property": {
+  {
+    "policy": "Property",
     "id": "a0A6A000001gSlw", 
     "name": "OneKloud",
     "stage": "New", 
@@ -21,7 +23,7 @@
     "renewalDate": "11.20.2017",
     "premium": 3231 
   },
-  "Workers’ Compensation": {
+  { "policy": "Workers’ Compensation",
     "id": "a0A6A000001gSlw", 
     "name": "OneKloud",
     "stage": "New", 
@@ -32,7 +34,7 @@
     "renewalDate": "11.20.2017",
     "premium": 221991
   },
-  "Product Liability": {
+  { "policy": "Product Liability",
     "id": "a0A6A000001gSlw", 
     "name": "OneKloud",
     "stage": "New", 
@@ -43,7 +45,7 @@
     "renewalDate": "11.20.2017",
     "premium": 456
   },
-  "Business Interruption": {
+  { "policy": "Business Interruption",
     "id": "a0A6A000001gSlw", 
     "name": "OneKloud",
     "stage": "New", 
@@ -54,7 +56,7 @@
     "renewalDate": "11.20.2017",
     "premium": 121984
   },
-  "Vehicle": {
+  { "policy": "Vehicle",
     "id": "a0A6A000001gSlw", 
     "name": "OneKloud",
     "stage": "New", 
@@ -65,5 +67,4 @@
     "renewalDate": "11.20.2017",
     "premium": 141905
   }
-  
-}
+]

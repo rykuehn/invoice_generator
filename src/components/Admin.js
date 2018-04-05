@@ -7,6 +7,7 @@ const Title = styled.h1`
 font-size: 40px;
 color: black;
 font-family: Helvetica;
+margin-bottom: 40px;
 `;
 
 const InvoiceListContainer = styled.div`
@@ -42,12 +43,12 @@ class Admin extends Component {
             <tr>
               <th>#</th>
               <th>Date Created</th>
-              <th> View </th>
+              <th>Preview</th>
             </tr>
             {this.renderAllInvoices(this.props.allInvoices)}
           </tbody>
         </Table>
-        <Link to="/invoiceCreator"><button>Generate new Invoice</button></Link>
+        <Link to="/invoiceCreator"><button>Generate New Invoice</button></Link>
       </InvoiceListContainer>
     );
   }
