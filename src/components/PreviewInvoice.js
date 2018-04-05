@@ -10,20 +10,18 @@ const PreviewWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center
-`
-
+`;
 const PreviewForm = styled.div`
-  width: 70vw;
-`
+  ;width: 70vw;
+`;
 const Logo = styled.img`
   width: 50%;
   margin-left: 20%;
   margin-top: 20px
 `;
-
 const Center = styled.div`
   text-align:center;
-  margin=-bottom: 10px;
+  margin: 20px 0;
 `;
 
 class PreviewInvoice extends Component {
@@ -85,7 +83,7 @@ class PreviewInvoice extends Component {
           </tr>
         </tbody>
       </Table>
-    )
+    );
   }
 
   render() {
@@ -123,7 +121,7 @@ class PreviewInvoice extends Component {
         </PreviewForm>
         : ''}
       </PreviewWrapper>
-    )
+    );
   }
 };
 

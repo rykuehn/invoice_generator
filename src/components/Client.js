@@ -30,23 +30,23 @@ const Client = (props) => {
       );
     });
   };
-    return (
-      <InvoiceListContainer>
-        <Title>Welcome!</Title>
-        <p> Here is a list of all your invoices </p>
-        <Table striped bordered condensed hover>
-          <tbody>
-            <tr>
-              <th>#</th>
-              <th>Date Created</th>
-              <th>Preview</th>
-            </tr>
-            {renderAllInvoices(props.allInvoices)}
-          </tbody>
-        </Table>
-        <Link to="/"><Button bsSize="small" bsStyle="danger">Sign Out</Button></Link>
-      </InvoiceListContainer>
-    );
+  return (
+    <InvoiceListContainer>
+      <Title>Welcome!</Title>
+      <p> Here is a list of all your invoices </p>
+      <Table striped bordered condensed hover>
+        <tbody>
+          <tr>
+            <th>#</th>
+            <th>Date Created</th>
+            <th>Preview</th>
+          </tr>
+          {renderAllInvoices(props.allInvoices)}
+        </tbody>
+      </Table>
+      <Link to="/"><Button bsSize="small" bsStyle="danger">Sign Out</Button></Link>
+    </InvoiceListContainer>
+  );
 };
 
 export default Client;
