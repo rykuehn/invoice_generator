@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
 import { ControlLabel, FormGroup, FormControl, Button, Checkbox} from 'react-bootstrap';
+import PolicyTable from './PolicyTable';
 
 const Title = styled.h1`
   font-size: 40px;
@@ -25,7 +26,10 @@ class InvoiceCreator extends Component {
       show: false,
       invoiceCounter: 0,
       selectedPolicies: {},
+      renderToPolicyTable: []
     }
+
+    this.renderPolicyTables = this.renderPolicyTables.bind(this);
   }
 
   componentDidMount() {
@@ -65,10 +69,34 @@ class InvoiceCreator extends Component {
   }
 
   fillOutPolicyDetails() {
-    console.log(this.state.selectedPolicies)
+    var renderToPolicyTable = [];
+    if(Object.keys(this.state.selectedPolicies).length === 0){
+      alert('Please Select at least one policy');
+    } else{
+      for(var key in this.state.selectedPolicies){
+        if(this.state.selectedPolicies[key] === 1) {
+          this.state.policies.forEach(item => {
+            if(item.policy === key){
+              renderToPolicyTable.push(item);
+            };
+          });
+        };
+      };
+    };
+
+    this.setState({renderToPolicyTable});
   }
 
+  renderPolicyTables(data){
+    return data.map((item, i) => {
+     return ( <PolicyTable key={i} info={item} /> );
+    });
+  };
+
   render(){
+    const TableDisplay = this.state.renderToPolicyTable.length > 0 ? 
+      this.renderPolicyTables(this.state.renderToPolicyTable) : '';
+
     return (
       <div>
         <Title>Create an Invoice</Title>
@@ -80,8 +108,9 @@ class InvoiceCreator extends Component {
               {this.renderPolicyOptions(this.state.policies)}
           </FormGroup>
           </form>
-
           <Button onClick={this.fillOutPolicyDetails.bind(this)} type="submit">Fill Out Details On These Policies</Button>
+          {TableDisplay}
+          {this.state.renderToPolicyTable.length > 0 ? <Link to='/admin'><Button bsStyle="success" type="submit">Submit</Button></Link> : ''}
         </TableContainer> : ''}
       </div>
     );
